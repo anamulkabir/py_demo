@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-  dockerfile true
-  }
+  agent any
   stages {
     stage ('Code pull'){
         steps{
@@ -14,6 +12,9 @@ pipeline {
       }
     }
     stage('Test build') {
+		agent {
+			dockerfile true
+		}
       steps {
         sh 'python -m unittest -v test_unit'
       }

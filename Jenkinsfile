@@ -19,6 +19,7 @@ pipeline {
       }
     }
 	stage('Clean dangling images') {
+	 agent any	
 	  steps {
 	   sh 'docker system prune -f'
 	  }

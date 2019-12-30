@@ -18,12 +18,10 @@ pipeline {
         sh 'python -m unittest -v test_unit'
       }
     }
-	stage('Clean dangling images') {
-	 agent any	
-	  steps {
-	   sh 'docker system prune -f'
-	  }
+  }
+  post {
+	always {
+	 sh 'docker system prune -f'
 	}
-
   }
 }
